@@ -12,7 +12,7 @@ if(isset($_SESSION['login'])){
         $pagina = 'oportunidades';
     }
 } else{
-    $pagina = 'home.blade.php'
+    $pagina = 'home.blade.php';
 };
 
 switch($pagina){
