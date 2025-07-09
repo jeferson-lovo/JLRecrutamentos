@@ -11,6 +11,19 @@
     overflow: hidden; /* Para evitar que o conteúdo transborde */
   }
 
+  .nav-rodape {
+    background-color: #4169E1;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width:100%;
+    text-align: center;
+    color: white;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+
   nav ul {
     list-style-type: none;
     margin: 0;
@@ -18,9 +31,28 @@
     overflow: hidden;
   }
 
+  .nav-rodape ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
   nav li {
     float: left; /* Faz os itens ficarem lado a lado */
   }
+
+  .nav-rodape li a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-rodape li a:hover {
+  text-decoration: underline;
+}
 
   nav li a {
     display: block;
@@ -51,14 +83,18 @@
   </ul>
 </nav>
 
-      <img src="{{ asset('img/Logo1.png') }}" alt="Logo JLRecrutamento" width="100" height="50">
-    <h1>Home</h1>
-    <h1>Curriculos</h1>
-    <h1>Oportunidades</h1>
-    <h1>cadastros</h1>
+
 
     <main role="main"> <!-- aqui vai as paginas a parte de cima é o tamplate -->
         @yield('main')
     </main> 
+
+    <nav class="nav-rodape">
+      <ul>
+        <li>Sobre nós</li>
+        <li>Contato</li>
+        <li>Desenvolvido por Jeferson Lovo</li>
+      </ul>
+    </nav>
 </body>
 </html>
