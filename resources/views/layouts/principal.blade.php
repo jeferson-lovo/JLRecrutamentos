@@ -76,10 +76,12 @@
     <li>
       <img src="{{ asset('img/Logo1.png') }}" alt="Logo JLRecrutamento" width="100" height="50">
     </li>
-    <li><a href="#">login</a></li>
-    <li><a href="#">Sobre</a></li>
-    <li><a href="#">Serviços</a></li>
-    <li><a href="#">Contato</a></li>
+    <li><a href="#">Oportunidades</a></li>
+    <li><a href="#">Curriculos</a></li>
+    <li><a href="#">Competencias</a></li>
+    <li><a href="#">Interesse</a></li>
+    <li><a href="#">Cidades</a></li>
+    <li><a href="#">Metodologias</a></li>
   </ul>
 </nav>
 
