@@ -91,6 +91,7 @@
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
+            text-align: center;
         }
 
         .btn:hover {
@@ -136,7 +137,10 @@
                     <a href="#">Esqueci minha senha</a>
                 </div>
 
-                <input type="submit" value="Entrar" class="btn">
+                <div class="btn">
+                    <!--   <input type="submit" value="Entrar" class="btn" > -->
+                     <a href="{{ route('oportunidades') }}" class="btn" type="submit">Entrar</a>
+                </div>   
 
                 <div class="register-link">
                     <span>Não tem conta? </span>

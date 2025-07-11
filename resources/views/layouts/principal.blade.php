@@ -66,6 +66,24 @@
     background-color: #000080;
     color: #FFFF00;
   }
+
+  .btn {
+    width: 20%;
+    padding: 12px;
+    background-color: #4169E1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .btn:hover {
+    background-color: #27408B;
+  }
+
+
 </style>
     <title>JL Recrutamentos</title>
 </head>
@@ -76,7 +94,7 @@
     <li>
       <img src="{{ asset('img/Logo1.png') }}" alt="Logo JLRecrutamento" width="100" height="50">
     </li>
-    <li><a href="#">Oportunidades</a></li>
+    <li><a href="{{ route('oportunidades') }}">Oportunidades</a></li>
     <li><a href="#">Curriculos</a></li>
     <li><a href="#">Competencias</a></li>
     <li><a href="#">Interesse</a></li>
