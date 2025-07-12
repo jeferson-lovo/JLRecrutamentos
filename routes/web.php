@@ -1,42 +1,22 @@
 <?php
 
+use App\Http\Controllers\administrativo;
+use App\Http\Controllers\controleradm;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/', [controleradm::class, 'homec'])->name('/');
+Route::get('/home', [controleradm::class, 'homec'])->name('home');
+Route::get('/oportunidades', [controleradm::class, 'oportunidadesc'])->name('oportunidades');
+Route::get('/oportunidade', [controleradm::class, 'oportunidadec'])->name('oportunidade');
+Route::get('/curriculos', [controleradm::class, 'curriculosc'])->name('curriculos');
+Route::get('/competencias', [controleradm::class, 'competenciasc'])->name('competencias');
+Route::get('/interesse', [controleradm::class, 'interessec'])->name('interesse');
+Route::get('/cidades', [controleradm::class, 'cidadesc'])->name('cidades');
+Route::get('/metodologias', [controleradm::class, 'metodologiasc'])->name('metodologias');
+Route::get('/cidade', [controleradm::class, 'cidadec'])->name('cidade');
 
-Route::get('/oportunidades', function () {
-    return view('oportunidades');
-})->name('oportunidades');
 
-Route::get('/curriculos', function () {
-    return view('curriculos');
-});
-
-Route::get('/competencias', function () {
-    return view('competencias');
-});
-
-Route::get('/interesse', function () {
-    return view('interesse');
-});
-
-Route::get('/cidades', function () {
-    return view('cidades');
-});
-
-Route::get('/metodologias', function () {
-    return view('metodologias');
-});
-
-Route::get('/oportunidade', function () {
-    return view('oportunidade');
-})->name('oportunidade');
 /*
 
 exemplos de rotas com parametros 
@@ -59,6 +39,3 @@ Route::get('/hello2/{parametro}/{numero}', function($parametro, $numero) {
   ->where('numero', '[0-9]+');
 
   */
-  Route::get('/cidade', function () {
-    return view('cidade');
-});
