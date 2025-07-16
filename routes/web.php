@@ -15,6 +15,7 @@ Route::get('/interesse', [controleradm::class, 'interessec'])->name('interesse')
 Route::get('/cidades', [controleradm::class, 'cidadesc'])->name('cidades');
 Route::get('/metodologias', [controleradm::class, 'metodologiasc'])->name('metodologias');
 Route::get('/cidade', [controleradm::class, 'cidadec'])->name('cidade');
+Route::resource('/adm', controleradm::class); // controlador com as rotas para inserção edição etc 
 
 
 /*
