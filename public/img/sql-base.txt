@@ -1,0 +1,110 @@
+CREATE TABLE oportunidades 
+( 
+ descricao_oportunidade INT,  
+ id_oportunidade INT PRIMARY KEY,  
+ titulo_oportunidade INT,  
+ requisitos_oportunidade INT,  
+ beneficios INT,  
+ data_abertura INT,  
+ data_fechamento INT,  
+ idcidades INT,  
+); 
+
+CREATE TABLE cidades 
+( 
+ id_cidade INT PRIMARY KEY,  
+ nome_cidade INT,  
+ uf_cidade INT,  
+); 
+
+CREATE TABLE metodologias 
+( 
+ id_metodologia INT PRIMARY KEY,  
+ nome_metodologia INT,  
+ descricao_metodologia INT,  
+); 
+
+CREATE TABLE competencias 
+( 
+ id_competencia INT PRIMARY KEY,  
+ nome_competencia INT,  
+ descricao_competencia INT,  
+); 
+
+CREATE TABLE areas 
+( 
+ id_area INT PRIMARY KEY,  
+ nome_area INT,  
+ descricao_area INT,  
+); 
+
+CREATE TABLE curriculos 
+( 
+ id_curriculo INT PRIMARY KEY,  
+ nome_curriculo INT,  
+ sexo_curriculo INT,  
+ nacionalidade_curricuo INT,  
+ cidade_atual_curriculo INT,  
+ uf_atual_curriculo INT,  
+ telefone_curriculo INT,  
+ e-mail_curriculo INT,  
+ linkedin INT,  
+ instagran INT,  
+ facebook INT,  
+ data_atuaizacao_curriculo INT,  
+ comentario_rh INT,  
+ nota_rh INT,  
+ idoportunidades INT,  
+ idmetodologias INT,  
+ idcompetencias INT,  
+ idareas INT,  
+ idexperiencias INT,  
+ idaperfeicoamentos INT,  
+ idformacoes INT,  
+); 
+
+CREATE TABLE formacoes 
+( 
+ id_formacao INT PRIMARY KEY,  
+ nivel_formacao INT,  
+ nome_curso INT,  
+ nome_entidade INT,  
+ modalidade INT,  
+ situacao INT,  
+); 
+
+CREATE TABLE aperfeicoamentos 
+( 
+ id_aperfeicoamento INT PRIMARY KEY,  
+ nome_aperfeicoamento INT,  
+ nome_entidade_ap INT,  
+ carga_horaria_ap INT,  
+); 
+
+CREATE TABLE experiencias 
+( 
+ id_experiencia INT PRIMARY KEY,  
+ nome_empresa INT,  
+ cargo INT,  
+ data_inicio_exp INT,  
+ data_fim_exp INT,  
+ comentarios_exp INT,  
+); 
+
+CREATE TABLE administradores 
+( 
+ id_adm INT PRIMARY KEY,  
+ cpf_adm INT,  
+ nome_adm INT,  
+ e-mail_adm INT,  
+ senha_adm INT,  
+); 
+
+ALTER TABLE oportunidades ADD FOREIGN KEY(idcidades) REFERENCES cidades (idcidades)
+ALTER TABLE curriculos ADD FOREIGN KEY(idoportunidades) REFERENCES oportunidades (idoportunidades)
+ALTER TABLE curriculos ADD FOREIGN KEY(idmetodologias) REFERENCES metodologias (idmetodologias)
+ALTER TABLE curriculos ADD FOREIGN KEY(idcompetencias) REFERENCES competencias (idcompetencias)
+ALTER TABLE curriculos ADD FOREIGN KEY(idareas) REFERENCES areas (idareas)
+ALTER TABLE curriculos ADD FOREIGN KEY(idexperiencias) REFERENCES experiencias (idexperiencias)
+ALTER TABLE curriculos ADD FOREIGN KEY(idaperfeicoamentos) REFERENCES aperfeicoamentos (idaperfeicoamentos)
+ALTER TABLE curriculos ADD FOREIGN KEY(idformacoes) REFERENCES formacoes (idformacoes)
