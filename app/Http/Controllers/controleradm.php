@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Oportunidade;
+use App\Models\Cidade;
 use Illuminate\Http\Request;
 
 class controleradm extends Controller
@@ -64,11 +66,13 @@ class controleradm extends Controller
 
      public function homec()
     {
+        
         return view('home');
     }
     public function oportunidadesc()
     {
-        return view('oportunidades');
+        $oportunidades = Oportunidade::all();
+        return view('oportunidades', compact('oportunidades'));
     }
 
      public function oportunidadec()
@@ -93,7 +97,9 @@ class controleradm extends Controller
 
      public function cidadesc()
     {
-        return view('cidades');
+          $cidades = Cidade::all();
+        return view('cidades', compact('cidades'));
+        
     }
 
      public function metodologiasc()

@@ -98,7 +98,7 @@
     <li><a href="#">Curriculos</a></li>
     <li><a href="#">Competencias</a></li>
     <li><a href="#">Interesse</a></li>
-    <li><a href="#">Cidades</a></li>
+    <li><a href="{{ route('cidades') }}">Cidades</a></li>
     <li><a href="#">Metodologias</a></li>
   </ul>
 </nav>
