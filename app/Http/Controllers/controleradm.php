@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Oportunidade;
 use App\Models\Cidade;
+//use App\Models\cidadescreate;
 use Illuminate\Http\Request;
+
 
 class controleradm extends Controller
 {
@@ -21,7 +23,7 @@ class controleradm extends Controller
      */
     public function create()
     {
-        //
+        return view('cidadescreate');
     }
 
     /**
@@ -29,7 +31,14 @@ class controleradm extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cidade = new Cidade();
+        $cidade->nome_cidades = $request->nome_cidades;
+        $cidade->uf_cidade = $request->uf_cidade;
+        $cidade->save();
+
+        return redirect()->route('cidades');
+        
+
     }
 
     /**

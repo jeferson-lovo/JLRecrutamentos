@@ -35,7 +35,7 @@
 
     <div class="btn">
         <!--   <input type="submit" value="Entrar" class="btn" > -->
-        <a href="{{ route('cidade') }}" class="btn" type="submit">Nova Cidade</a>
+        <a href="{{ route('adm.create') }}" class="btn" type="submit">Nova Cidade</a>
     </div>   
 
     </body>
