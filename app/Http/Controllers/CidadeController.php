@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Oportunidade;
 use App\Models\Cidade;
-//use App\Models\cidadescreate;
 use Illuminate\Http\Request;
 
-
-class controleradm extends Controller
+class CidadeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +20,7 @@ class controleradm extends Controller
      */
     public function create()
     {
-    //    return view('cidadescreate');
+          return view('cidadescreate');
     }
 
     /**
@@ -31,7 +28,7 @@ class controleradm extends Controller
      */
     public function store(Request $request)
     {
-     /*   $request->validate(
+         $request->validate(
             [ 'nome_cidades' => 'required|min:3|unique:cidades',
               'uf_cidade' => 'required|max:2'], //aqui vai o nome do campo do formulario e nao o campo da tabela do banco de dados
             [
@@ -47,14 +44,12 @@ class controleradm extends Controller
 
         return redirect()->route('cidades')->with('msg_success','Cidade Cadastrada com sucesso');
         // essa mensagem vai para o @if (session('msg_success')) dentro da view retornada
-        */
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Cidade $cidade)
     {
         //
     }
@@ -62,73 +57,27 @@ class controleradm extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Cidade $cidade)
     {
-      //  $cidade = Cidade::find($id);
-      //  return view('cidadesedit', compact(['id']));
+         return view('cidadesedit', compact(['cidade']));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Cidade $cidade)
     {
-        //
+        $cidade->nome_cidades = $request->nome_cidades;
+        $cidade->uf_cidade = $request->uf_cidade;
+        $cidade->save();
+        return redirect()->route('cidades')->with('msg_success','Cidade Alterada com sucesso');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Cidade $cidade)
     {
         //
-    }
-
-     public function homec()
-    {
-
-        return view('home');
-    }
-    public function oportunidadesc()
-    {
-        $oportunidades = Oportunidade::all();
-        return view('oportunidades', compact('oportunidades'));
-    }
-
-     public function oportunidadec()
-    {
-        return view('oportunidade');
-    }
-
-     public function curriculosc()
-    {
-        return view('curriculos');
-    }
-
-     public function competenciasc()
-    {
-        return view('competencias');
-    }
-
-     public function interessec()
-    {
-        return view('interesse');
-    }
-
-     public function cidadesc()
-    {
-          $cidades = Cidade::all();
-        return view('cidades', compact('cidades'));
-
-    }
-
-     public function metodologiasc()
-    {
-        return view('metodologias');
-    }
-
-     public function cidadec()
-    {
-        return view('cidade');
     }
 }

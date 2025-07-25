@@ -10,6 +10,11 @@
     <title>Document</title>
 </head>
 <body>
+    @if (session('msg_success'))
+    <div>
+        {{ session('msg_success')}}
+    </div>
+    @endif
 
 @foreach($cidades as $cd)
 <tr>
@@ -24,7 +29,7 @@
             <a class="btn btn-primary btn-sm active" href="">
                 Detalhes
             </a>
-            <a class="btn btn-secondary btn-sm active" href="">
+            <a class="btn btn-secondary btn-sm active" href="{{ route('cidade.edit', $cd->id)}}">
                 Editar
             </a>
         </form>
@@ -35,8 +40,8 @@
 
     <div class="btn">
         <!--   <input type="submit" value="Entrar" class="btn" > -->
-        <a href="{{ route('adm.create') }}" class="btn" type="submit">Nova Cidade</a>
-    </div>   
+        <a href="{{ route('cidade.create') }}" class="btn" type="submit">Nova Cidade</a>
+    </div>
 
     </body>
 </html>
