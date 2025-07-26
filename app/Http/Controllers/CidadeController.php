@@ -78,6 +78,7 @@ class CidadeController extends Controller
      */
     public function destroy(Cidade $cidade)
     {
-        //
+        $cidade->delete();
+        return redirect()->route('cidades')->with('msg_success','Cidade Removida com sucesso');
     }
 }

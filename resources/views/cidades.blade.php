@@ -22,7 +22,9 @@
     <td>{{ $cd->nome_cidades}}</td>
     <td>{{ $cd->uf_cidade }}</td>
     <td>
-        <form action="" method="post">
+        <form action="{{ route('cidade.destroy', $cd->id)}}" method="post">
+            @csrf
+            @method('DELETE')
             <button type="submit" class="btn btn-danger btn-sm">
                 Excluir
             </button>
