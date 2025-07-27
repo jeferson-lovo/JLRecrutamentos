@@ -89,16 +89,6 @@ class controleradm extends Controller
 
         return view('home');
     }
-    public function oportunidadesc()
-    {
-        $oportunidades = Oportunidade::all();
-        return view('oportunidades', compact('oportunidades'));
-    }
-
-     public function oportunidadec()
-    {
-        return view('oportunidade');
-    }
 
      public function curriculosc()
     {
@@ -115,20 +105,17 @@ class controleradm extends Controller
         return view('interesse');
     }
 
-     public function cidadesc()
-    {
-          $cidades = Cidade::all();
-        return view('cidades', compact('cidades'));
+   //  public function cidadesc()
+   // {
+   //       $cidades = Cidade::all();
+   //     return view('cidades/cidades', compact('cidades'));
 
-    }
+  //  }
 
-     public function metodologiasc()
-    {
-        return view('metodologias');
-    }
+  ///   public function metodologiasc()
+  //  {
+  //      return view('metodologias');
+  //  }
 
-     public function cidadec()
-    {
-        return view('cidade');
-    }
+
 }

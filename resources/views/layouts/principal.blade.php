@@ -4,7 +4,7 @@
     <!-- aqui coloca CSS e BootStrap -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
   <style>
   nav {
     background-color: #4169E1;
@@ -94,12 +94,12 @@
     <li>
       <img src="{{ asset('img/Logo1.png') }}" alt="Logo JLRecrutamento" width="100" height="50">
     </li>
-    <li><a href="{{ route('oportunidades') }}">Oportunidades</a></li>
+    <li><a href="{{ route('oportunidades.index') }}">Oportunidades</a></li>
     <li><a href="#">Curriculos</a></li>
     <li><a href="#">Competencias</a></li>
     <li><a href="#">Interesse</a></li>
-    <li><a href="{{ route('cidades') }}">Cidades</a></li>
-    <li><a href="#">Metodologias</a></li>
+    <li><a href="{{ route('cidades.index') }}">Cidades</a></li>
+    <li><a href="{{ route('metodologias.index')}}">Metodologias</a></li>
   </ul>
 </nav>
 
@@ -107,7 +107,7 @@
 
     <main role="main"> <!-- aqui vai as paginas a parte de cima é o tamplate -->
         @yield('main')
-    </main> 
+    </main>
 
     <nav class="nav-rodape">
       <ul>

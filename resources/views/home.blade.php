@@ -139,12 +139,12 @@
 
                 <div class="btn">
                     <!--   <input type="submit" value="Entrar" class="btn" > -->
-                     <a href="{{ route('oportunidades') }}" class="btn" type="submit">Entrar</a>
-                </div>   
+                     <a href="{{ route('oportunidades.index') }}" class="btn" type="submit">Entrar</a>
+                </div>
 
                 <div class="register-link">
                     <span>Não tem conta? </span>
-                    <a href="#">cadastre se</a>   
+                    <a href="#">cadastre se</a>
                 </div>
                 <div class="register-link">
                     <span>Entrar Com</span>

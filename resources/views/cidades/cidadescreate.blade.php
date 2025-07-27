@@ -2,7 +2,7 @@
 
 @section('main')
 <div class="container">
-    <form action="{{ Route('cidade.store') }} " method="post">
+    <form action="{{ Route('cidades.store') }} " method="post">
         @csrf  <!-- envia token para segurança para conseguir salvar um formulario-->
         <div class="input-group">
             <input type="text" placeholder="Nome Da Cidade" name="nome_cidades">
@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <a href="{{ Route('cidades') }}" class="btn btn-secondary ml-1" role="button" aria-pressed="true" >Cancelar </a>
+        <a href="{{ Route('cidades.index') }}" class="btn btn-secondary ml-1" role="button" aria-pressed="true" >Cancelar </a>
     </form>
 </div>
 

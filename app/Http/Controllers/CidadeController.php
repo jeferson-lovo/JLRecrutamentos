@@ -12,7 +12,8 @@ class CidadeController extends Controller
      */
     public function index()
     {
-        //
+        $cidades = Cidade::all();
+        return view('cidades/cidades', compact('cidades'));
     }
 
     /**
@@ -20,7 +21,7 @@ class CidadeController extends Controller
      */
     public function create()
     {
-          return view('cidadescreate');
+        return view('cidades/cidadescreate');
     }
 
     /**
@@ -28,7 +29,7 @@ class CidadeController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate(
+        $request->validate(
             [ 'nome_cidades' => 'required|min:3|unique:cidades',
               'uf_cidade' => 'required|max:2'], //aqui vai o nome do campo do formulario e nao o campo da tabela do banco de dados
             [
@@ -42,7 +43,7 @@ class CidadeController extends Controller
         $cidade->uf_cidade = $request->uf_cidade;
         $cidade->save();
 
-        return redirect()->route('cidades')->with('msg_success','Cidade Cadastrada com sucesso');
+        return redirect()->route('cidades.index')->with('msg_success','Cidade Cadastrada com sucesso');
         // essa mensagem vai para o @if (session('msg_success')) dentro da view retornada
     }
 
@@ -59,7 +60,7 @@ class CidadeController extends Controller
      */
     public function edit(Cidade $cidade)
     {
-         return view('cidadesedit', compact(['cidade']));
+        return view('cidades/cidadesedit', compact(['cidade']));
     }
 
     /**
@@ -70,7 +71,7 @@ class CidadeController extends Controller
         $cidade->nome_cidades = $request->nome_cidades;
         $cidade->uf_cidade = $request->uf_cidade;
         $cidade->save();
-        return redirect()->route('cidades')->with('msg_success','Cidade Alterada com sucesso');
+        return redirect()->route('cidades.index')->with('msg_success','Cidade Alterada com sucesso');
     }
 
     /**
@@ -79,6 +80,10 @@ class CidadeController extends Controller
     public function destroy(Cidade $cidade)
     {
         $cidade->delete();
-        return redirect()->route('cidades')->with('msg_success','Cidade Removida com sucesso');
+        return redirect()->route('cidades.index')->with('msg_success','Cidade Removida com sucesso');
     }
+  //   public function cidadec()
+  //  {
+  //      return view('cidades/cidades');
+  //  }
 }

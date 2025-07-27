@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Metodologia</title>
 </head>
 <body>
     @if (session('msg_success'))
@@ -16,13 +16,13 @@
     </div>
     @endif
 
-@foreach($cidades as $cd)
+@foreach($metodologias as $mtd)
 <tr>
-    <th scope="row">{{ $cd->id }}</th>
-    <td>{{ $cd->nome_cidades}}</td>
-    <td>{{ $cd->uf_cidade }}</td>
+    <th scope="row">{{ $mtd->id }}</th>
+    <td>{{ $mtd->nome_metodologia}}</td>
+    <td>{{ $mtd->descricao_metodologia}}</td>
     <td>
-        <form action="{{ route('cidade.destroy', $cd->id)}}" method="post">
+        <form action="{{ route('metodologias.destroy', $mtd->id)}}" method="post">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger btn-sm">
@@ -31,7 +31,7 @@
             <a class="btn btn-primary btn-sm active" href="">
                 Detalhes
             </a>
-            <a class="btn btn-secondary btn-sm active" href="{{ route('cidade.edit', $cd->id)}}">
+            <a class="btn btn-secondary btn-sm active" href="{{ route('metodologias.edit', $mtd->id)}}">
                 Editar
             </a>
         </form>
@@ -42,7 +42,7 @@
 
     <div class="btn">
         <!--   <input type="submit" value="Entrar" class="btn" > -->
-        <a href="{{ route('cidade.create') }}" class="btn" type="submit">Nova Cidade</a>
+        <a href="{{ route('metodologias.create') }}" class="btn" type="submit">Nova Metodologia</a>
     </div>
 
     </body>

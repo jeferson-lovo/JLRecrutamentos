@@ -12,7 +12,8 @@ class OportunidadeController extends Controller
      */
     public function index()
     {
-        //
+        $oportunidades = Oportunidade::all();
+        return view('oportunidades/oportunidades', compact('oportunidades'));
     }
 
     /**
@@ -61,5 +62,10 @@ class OportunidadeController extends Controller
     public function destroy(Oportunidade $oportunidade)
     {
         //
+    }
+
+    public function oportunidadec()
+    {
+        return view('oportunidades/oportunidade');
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.principal')
 
 @section('main')
-<form action="{{ route('cidade.update', $cidade->id)}}" method="POST"> <!-- Html só envia requisição post e Get -->
+<form action="{{ route('cidades.update', $cidade->id)}}" method="POST"> <!-- Html só envia requisição post e Get -->
     <!-- Roteamento do laravel para enviar a requisição put por html -->
     @csrf
     @method('PUT')
