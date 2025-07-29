@@ -96,10 +96,13 @@
     </li>
     <li><a href="{{ route('oportunidades.index') }}">Oportunidades</a></li>
     <li><a href="#">Curriculos</a></li>
-    <li><a href="#">Competencias</a></li>
-    <li><a href="#">Interesse</a></li>
     <li><a href="{{ route('cidades.index') }}">Cidades</a></li>
     <li><a href="{{ route('metodologias.index')}}">Metodologias</a></li>
+    <li><a href="{{ route('competencias.index')}}">Competencias</a></li>
+    <li><a href="#">Areas</a></li>
+    <li><a href="#">Experiencias</a></li>
+    <li><a href="#">Aperfeiçõamentos</a></li>
+    <li><a href="#">Formações</a></li>
   </ul>
 </nav>
 

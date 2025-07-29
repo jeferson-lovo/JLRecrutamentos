@@ -29,7 +29,7 @@ class MetodologiaController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate(
+        $request->validate(
             [ 'nome_metodologia' => 'required|min:4|unique:metodologias',
               'descricao_metodologia' => 'required|min:4'], //aqui vai o nome do campo do formulario e nao o campo da tabela do banco de dados
             [
