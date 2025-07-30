@@ -1,18 +1,18 @@
 @extends('layouts.principal')
 
 @section('main')
-<form action="{{ route('competencias.update', $competencia->id)}}" method="POST"> <!-- Html só envia requisição post e Get -->
+<form action="{{ route('areas.update', $area->id)}}" method="POST"> <!-- Html só envia requisição post e Get -->
     <!-- Roteamento do laravel para enviar a requisição put por html -->
     @csrf
     @method('PUT')
     <div class="input-group">
-        <input type="text" placeholder="Nome da Competencia" name="nome_competencia" value="{{ $competencia->nome_competencia }}" required class="form-control">
-        <input type="text" placeholder="Descricao da competencia" name="descricao_competencia" value="{{ $competencia->descricao_competencia }}">
+        <input type="text" placeholder="Nome da Area" name="nome_area" value="{{ $area->nome_area }}" required class="form-control">
+        <input type="text" placeholder="Descricao da area" name="descricao_area" value="{{ $area->descricao_area }}">
     </div>
     <div class="input-group-append">
         <button type="submit" class="btn btn-primary">Salvar Edição</button>
     </div>
-    @error("nome_competencia")
+    @error("nome_area")
     <div class="alert alert-danger my-2 " role="alert">
 
     </div>

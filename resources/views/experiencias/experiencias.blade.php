@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>area</title>
+    <title>Experiencia</title>
 </head>
 <body>
     @if (session('msg_success'))
@@ -16,13 +16,17 @@
     </div>
     @endif
 
-@foreach($areas as $ar)
+@foreach($experiencias as $exp)
 <tr>
-    <th scope="row">{{ $ar->id }}</th>
-    <td>{{ $ar->nome_area}}</td>
-    <td>{{ $ar->descricao_area}}</td>
+    <th scope="row">{{ $exp->id }}</th>
+    <td>{{ $exp->nome_empresa}}</td>
+    <td>{{ $exp->cargo_inicio}}</td>
+    <td>{{ $exp->cargo_fim}}</td>
+    <td>{{ $exp->data_inicio}}</td>
+    <td>{{ $exp->data_fim}}</td>
+    <td>{{ $exp->comentarios_exp}}</td>
     <td>
-        <form action="{{ route('areas.destroy', $ar->id)}}" method="post">
+        <form action="{{ route('experiencias.destroy', $exp->id)}}" method="post">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger btn-sm">
@@ -31,7 +35,7 @@
             <a class="btn btn-primary btn-sm active" href="">
                 Detalhes
             </a>
-            <a class="btn btn-secondary btn-sm active" href="{{ route('areas.edit', $ar->id)}}">
+            <a class="btn btn-secondary btn-sm active" href="{{ route('experiencias.edit', $exp->id)}}">
                 Editar
             </a>
         </form>
@@ -42,7 +46,7 @@
 
     <div class="btn">
         <!--   <input type="submit" value="Entrar" class="btn" > -->
-        <a href="{{ route('areas.create') }}" class="btn" type="submit">Nova areas</a>
+        <a href="{{ route('experiencias.create') }}" class="btn" type="submit">Nova experiencia</a>
     </div>
 
     </body>

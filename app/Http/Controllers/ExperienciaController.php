@@ -12,7 +12,8 @@ class ExperienciaController extends Controller
      */
     public function index()
     {
-        //
+        $experiencias = Experiencia::all();
+        return view('experiencias/experiencias', compact('experiencias'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ExperienciaController extends Controller
      */
     public function create()
     {
-        //
+        return view('experiencias/experienciascreate');
     }
 
     /**
@@ -28,7 +29,30 @@ class ExperienciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [ 'nome_empresa' => 'required|min:2|:experiencias',
+              'cargo_inicio',
+              'cargo_fim',
+              'data_inicio',
+              'data_fim',
+              'comentarios_exp' => 'required|min:4'], //aqui vai o nome do campo do formulario e nao o campo da tabela do banco de dados
+            [
+                'nome_empresa' => 'O nome da area deve possuir pelo menos 2 caracteres',
+                'data_fim' => 'Data Final nao pode ser menor que a data inicial',
+                'comentarios_exp' => 'O campo Descrição deve conter Pelo Menos 4 caracteres'
+            ]
+        );
+        $experiencias = new Experiencia();
+        $experiencias->nome_empresa = $request->nome_empresa;
+        $experiencias->cargo_inicio = $request->cargo_inicio;
+        $experiencias->cargo_fim = $request->cargo_fim;
+        $experiencias->data_inicio = $request->data_inicio;
+        $experiencias->data_fim = $request->data_fim;
+        $experiencias->comentarios_exp = $request->comentarios_exp;
+        $experiencias->save();
+
+        return redirect()->route('experiencias.index')->with('msg_success','experiencia Cadastrada com sucesso');
+        // essa mensagem vai para o @if (session('msg_success')) dentro da view retornada
     }
 
     /**
@@ -44,7 +68,7 @@ class ExperienciaController extends Controller
      */
     public function edit(Experiencia $experiencia)
     {
-        //
+        return view('experiencias/experienciasedit', compact(['experiencia']));
     }
 
     /**
@@ -52,7 +76,14 @@ class ExperienciaController extends Controller
      */
     public function update(Request $request, Experiencia $experiencia)
     {
-        //
+        $experiencia->nome_empresa = $request->nome_empresa;
+        $experiencia->cargo_inicio = $request->cargo_inicio;
+        $experiencia->cargo_fim = $request->cargo_fim;
+        $experiencia->data_inicio = $request->data_inicio;
+        $experiencia->data_fim = $request->data_fim;
+        $experiencia->comentarios_exp = $request->comentarios_exp;
+        $experiencia->save();
+        return redirect()->route('experiencias.index')->with('msg_success','experiencia Alterada com sucesso');
     }
 
     /**
@@ -60,6 +91,7 @@ class ExperienciaController extends Controller
      */
     public function destroy(Experiencia $experiencia)
     {
-        //
+        $experiencia->delete();
+        return redirect()->route('experiencias.index')->with('msg_success','experiencia Removida com sucesso');
     }
 }
