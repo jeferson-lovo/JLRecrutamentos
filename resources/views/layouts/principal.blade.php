@@ -101,8 +101,8 @@
     <li><a href="{{ route('competencias.index')}}">Competencias</a></li>
     <li><a href="{{ route('areas.index')}}">Areas</a></li>
     <li><a href="{{ route('experiencias.index')}}">Experiencias</a></li>
-    <li><a href="#">Aperfeiçõamentos</a></li>
-    <li><a href="#">Formações</a></li>
+    <li><a href="{{ route('aperfeicoamentos.index')}}">Aperfeiçõamentos</a></li>
+    <li><a href="{{ route('formacoes.index')}}">Formações</a></li>
   </ul>
 </nav>
 

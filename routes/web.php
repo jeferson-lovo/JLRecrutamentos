@@ -14,15 +14,16 @@ use App\Http\Controllers\OportunidadeController;
 use Illuminate\Support\Facades\Route;
 
 
+
 Route::get('/', [controleradm::class, 'homec'])->name('/');
 Route::get('/home', [controleradm::class, 'homec'])->name('home');
 Route::get('/curriculos', [controleradm::class, 'curriculosc'])->name('curriculos');
 //Route::get('/competencias', [controleradm::class, 'competenciasc'])->name('competencias');
 //Route::get('/interesse', [controleradm::class, 'interessec'])->name('interesse');
 //Route::get('/cidades', [controleradm::class, 'cidadesc'])->name('cidades');
-Route::get('/metodologias', [controleradm::class, 'metodologiasc'])->name('metodologias');
+//Route::get('/metodologias', [controleradm::class, 'metodologiasc'])->name('metodologias');
 
-Route::resource('/adm', controleradm::class); // controlador com as rotas para inserção edição etc
+//Route::resource('/adm', controleradm::class); // controlador com as rotas para inserção edição etc
 Route::resource('/cidades', CidadeController::class); // controlador para as rotas cidade
 //Route::get('/cidade', [CidadeController::class, 'cidadec'])->name('cidade');
 Route::resource('/oportunidades', OportunidadeController::class);
@@ -31,6 +32,9 @@ Route::resource('/metodologias', MetodologiaController::class);
 Route::resource('/competencias', CompetenciaController::class);
 Route::resource('/areas', AreaController::class);
 Route::resource('/experiencias', ExperienciaController::class);
+Route::resource('/aperfeicoamentos', AperfeicoamentoController::class);
+Route::resource('/formacoes', FormacaoController::class)->parameters(['formacoes' => 'formacao']);
+
 
 
 /*
