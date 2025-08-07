@@ -27,7 +27,7 @@ Route::get('/curriculos', [controleradm::class, 'curriculosc'])->name('curriculo
 Route::resource('/cidades', CidadeController::class); // controlador para as rotas cidade
 //Route::get('/cidade', [CidadeController::class, 'cidadec'])->name('cidade');
 Route::resource('/oportunidades', OportunidadeController::class);
-Route::get('/oportunidade', [OportunidadeController::class, 'oportunidadec'])->name('oportunidade');
+//Route::get('/oportunidade', [OportunidadeController::class, 'oportunidadec'])->name('oportunidade');
 Route::resource('/metodologias', MetodologiaController::class);
 Route::resource('/competencias', CompetenciaController::class);
 Route::resource('/areas', AreaController::class);
