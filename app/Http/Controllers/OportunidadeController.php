@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Oportunidade;
+use App\Models\Cidade;
+use App\Models\Metodologia;
+use App\Models\Competencia;
+use App\Models\Area;
 use Illuminate\Http\Request;
 
 class OportunidadeController extends Controller
@@ -21,7 +25,11 @@ class OportunidadeController extends Controller
      */
     public function create()
     {
-        return view('oportunidades/oportunidadescreate');
+        $cidades = Cidade::all();
+        $metodologias = Metodologia::all();
+        $competencias = Competencia::all();
+        $areas = Area::all();
+        return view('oportunidades/oportunidadescreate', compact('cidades', 'metodologias', 'competencias', 'areas'));
     }
 
     /**
@@ -80,7 +88,11 @@ class OportunidadeController extends Controller
      */
     public function edit(Oportunidade $oportunidade)
     {
-        return view('oportunidades/oportunidadesedit', compact(['oportunidade']));
+        $cidades = Cidade::all();
+        $metodologias = Metodologia::all();
+        $competencias = Competencia::all();
+        $areas = Area::all();
+        return view('oportunidades/oportunidadesedit', compact('oportunidade', 'cidades', 'metodologias', 'competencias', 'areas'));
     }
 
     /**

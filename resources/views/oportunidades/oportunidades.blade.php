@@ -38,7 +38,7 @@
             <a class="btn btn-primary btn-sm active" href="">
                 Detalhes
             </a>
-            <a class="btn btn-secondary btn-sm active" href="{{ route('oportunidades.edit') }}">
+            <a class="btn btn-secondary btn-sm active" href="{{ route('oportunidades.edit', $op->id)}}">
                 Editar
             </a>
         </form>
