@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [controleradm::class, 'homec'])->name('/');
 Route::get('/home', [controleradm::class, 'homec'])->name('home');
-Route::get('/curriculos', [controleradm::class, 'curriculosc'])->name('curriculos');
+//Route::get('/curriculos', [controleradm::class, 'curriculosc'])->name('curriculos');
 //Route::get('/competencias', [controleradm::class, 'competenciasc'])->name('competencias');
 //Route::get('/interesse', [controleradm::class, 'interessec'])->name('interesse');
 //Route::get('/cidades', [controleradm::class, 'cidadesc'])->name('cidades');
@@ -34,6 +34,7 @@ Route::resource('/areas', AreaController::class);
 Route::resource('/experiencias', ExperienciaController::class);
 Route::resource('/aperfeicoamentos', AperfeicoamentoController::class);
 Route::resource('/formacoes', FormacaoController::class)->parameters(['formacoes' => 'formacao']);
+Route::resource('/curriculos', CurriculoController::class);
 
 
 

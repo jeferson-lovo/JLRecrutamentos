@@ -7,6 +7,7 @@ use App\Models\Cidade;
 use App\Models\Metodologia;
 use App\Models\Competencia;
 use App\Models\Area;
+use App\Models\Curriculo;
 use Illuminate\Http\Request;
 
 class OportunidadeController extends Controller
