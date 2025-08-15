@@ -39,7 +39,9 @@
     <td>{{ $cr->aperfeicoamento_id }}</td>
     <td>{{ $cr->formacao_id }}</td>
     <td>
-        <form action="" method="post">
+        <form action="{{ route('curriculos.destroy', $cr->id)}}" method="post">
+            @csrf
+            @method('DELETE')
             <button type="submit" class="btn btn-danger btn-sm">
                 Excluir
             </button>

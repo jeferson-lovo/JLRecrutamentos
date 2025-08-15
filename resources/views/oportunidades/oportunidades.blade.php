@@ -31,7 +31,9 @@
     <td>{{ $op->competencia_id }}</td>
     <td>{{ $op->area_id }}</td>
     <td>
-        <form action="" method="post">
+        <form action="{{ route('oportunidades.destroy', $op->id) }}" method="post">
+            @csrf
+            @method('DELETE')
             <button type="submit" class="btn btn-danger btn-sm">
                 Excluir
             </button>
