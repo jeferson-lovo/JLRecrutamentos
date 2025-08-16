@@ -86,12 +86,13 @@ class CidadeController extends Controller
  public function getCidadesPorUf($uf)
     {
         // Certifique-se de que o nome da coluna no banco de dados está correto: 'uf_cidade'
-        $cidades = Cidade::where('uf_cidade', $uf)
+        $cidads = Cidade::where('uf_cidade', $uf)
                          ->orderBy('nome_cidades')
-                         ->get(['id', 'nome_cidades']);
+                         ->select('id', 'nome_cidades') // Seleciona apenas os campos necessários
+                         ->get();
 
         // Retorna a lista de cidades como uma resposta JSON
-        return response()->json($cidades);
+        return response()->json($cidads);
     }
 
   //   public function cidadec()

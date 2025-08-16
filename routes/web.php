@@ -24,10 +24,10 @@ Route::get('/home', [controleradm::class, 'homec'])->name('home');
 //Route::get('/metodologias', [controleradm::class, 'metodologiasc'])->name('metodologias');
 
 //Route::resource('/adm', controleradm::class); // controlador com as rotas para inserção edição etc
-
+Route::get('/cidades/{uf}', [CidadeController::class, 'getCidadesPorUf'])->name('cidades.por.uf');
 Route::resource('/cidades', CidadeController::class); // controlador para as rotas cidade
 // routes/web.php
-Route::get('/cidades/{uf}', [CidadeController::class, 'getCidadesPorUf'])->name('cidades.por.uf');
+
 //para buscar as cidade por UF
 
 

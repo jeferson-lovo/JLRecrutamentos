@@ -40,7 +40,7 @@ class CurriculoController extends Controller
         $formacoes = Formacao::all();
 
       //  $cidads = \App\Models\Cidade::orderBy('nome_cidades')->get();
-        $ufs = \App\Models\Cidade::pluck('uf_cidade')->unique(); // só se quiser separar UF
+        $ufs = Cidade::select('uf_cidade')->distinct()->orderBy('uf_cidade', 'asc')->pluck('uf_cidade');//->get();
 
         return view('curriculos/curriculoscreate', compact('ufs', 'cidades', 'metodologias', 'competencias', 'areas', 'experiencias', 'aperfeicoamentos', 'formacoes'));
     }

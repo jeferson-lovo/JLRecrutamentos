@@ -110,6 +110,8 @@
 
 
 
+
+
 <!-- Scripts JavaScript e jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -126,6 +128,7 @@ $(document).ready(function() {
                 url: '/cidades/' + uf,
                 type: 'GET',
                 dataType: 'json',
+                data: { uf: uf },
                 success: function(data) {
                     cidadeSelect.empty().prop('disabled', false).append('<option value="">Selecione a Cidade</option>');
                     if (data.length > 0) {
