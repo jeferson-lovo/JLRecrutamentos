@@ -13,6 +13,8 @@ use App\Models\Area;
 use App\Models\Experiencia;
 use App\Models\Formacao;
 
+
+
 class CurriculoController extends Controller
 {
     /**
@@ -36,7 +38,11 @@ class CurriculoController extends Controller
         $experiencias = Experiencia::all();
         $aperfeicoamentos = Aperfeicoamento::all();
         $formacoes = Formacao::all();
-        return view('curriculos/curriculoscreate', compact('cidades', 'metodologias', 'competencias', 'areas', 'experiencias', 'aperfeicoamentos', 'formacoes'));
+
+      //  $cidads = \App\Models\Cidade::orderBy('nome_cidades')->get();
+        $ufs = \App\Models\Cidade::pluck('uf_cidade')->unique(); // só se quiser separar UF
+
+        return view('curriculos/curriculoscreate', compact('ufs', 'cidades', 'metodologias', 'competencias', 'areas', 'experiencias', 'aperfeicoamentos', 'formacoes'));
     }
 
     /**
@@ -118,7 +124,12 @@ class CurriculoController extends Controller
         $experiencias = Experiencia::all();
         $aperfeicoamentos = Aperfeicoamento::all();
         $formacoes = Formacao::all();
-        return view('curriculos/curriculosedit', compact('curriculo', 'cidades', 'metodologias', 'competencias', 'areas', 'experiencias', 'aperfeicoamentos', 'formacoes'));
+       // $curriculo = \App\Models\Curriculo::findOrFail($curriculo);
+        //$cidads = \App\Models\Cidade::orderBy('nome_cidades')->get();
+        //$ufs = \App\Models\Cidade::pluck('uf_cidade')->unique();
+       // $ufs = \App\Models\Cidade::pluck('uf_cidade')->unique()->sort();
+
+        return view('curriculos/curriculosedit', compact('cidades', 'metodologias', 'competencias', 'areas', 'experiencias', 'aperfeicoamentos', 'formacoes'));
     }
 
     /**

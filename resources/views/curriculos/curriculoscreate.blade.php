@@ -84,13 +84,74 @@
                 </div>
             @enderror
 
-            <select name="cidade_id" class="form-control">
-                @foreach($cidades as $cidade)
-                    <option value="{{ $cidade->id }}" {{ $cidade->id == $cidade->cidade_id ? 'selected' : '' }}>
-                        {{ $cidade->nome_cidades }}
-                    </option>
+
+
+
+            <!-- Select de Estado (UF) -->
+        <div class="mb-3">
+            <label for="uf_cidade" class="form-label">Estado (UF)</label>
+            <select name="uf_cidade" id="uf_cidade" class="form-select" required>
+                <option value="">Selecione o Estado</option>
+                @foreach($ufs as $uf)
+                    <option value="{{ $uf }}">{{ $uf }}</option>
                 @endforeach
             </select>
+        </div>
+
+        <!-- Select de Cidade -->
+        <div class="mb-3">
+            <label for="cidade_id" class="form-label">Cidade</label>
+            <select name="cidade_id" id="cidade_id" class="form-select" required disabled>
+                <option value="">Selecione a Cidade</option>
+            </select>
+        </div>
+
+
+
+
+
+<!-- Scripts JavaScript e jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#uf_cidade').on('change', function() {
+        var uf = $(this).val();
+        var cidadeSelect = $('#cidade_id');
+
+        // Limpa e desabilita o campo de cidades enquanto carrega
+        cidadeSelect.empty().prop('disabled', true).append('<option value="">Carregando...</option>');
+
+        if (uf) {
+            $.ajax({
+                url: '/cidades/' + uf,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    cidadeSelect.empty().prop('disabled', false).append('<option value="">Selecione a Cidade</option>');
+                    if (data.length > 0) {
+                        $.each(data, function(key, cidade) {
+                            cidadeSelect.append('<option value="' + cidade.id + '">' + cidade.nome_cidades + '</option>');
+                        });
+                    } else {
+                        cidadeSelect.empty().prop('disabled', true).append('<option value="">Nenhuma cidade encontrada</option>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Erro ao buscar cidades:", error);
+                    cidadeSelect.empty().prop('disabled', true).append('<option value="">Erro ao carregar cidades</option>');
+                }
+            });
+        } else {
+            // Se nenhum UF for selecionado, limpa e desabilita o campo de cidades
+            cidadeSelect.empty().prop('disabled', true).append('<option value="">Selecione a Cidade</option>');
+        }
+    });
+});
+</script>
+
+
+
+
 
             <select name="metodologia_id" class="form-control">
                 @foreach($metodologias as $metodologia)

@@ -82,6 +82,18 @@ class CidadeController extends Controller
         $cidade->delete();
         return redirect()->route('cidades.index')->with('msg_success','Cidade Removida com sucesso');
     }
+
+ public function getCidadesPorUf($uf)
+    {
+        // Certifique-se de que o nome da coluna no banco de dados está correto: 'uf_cidade'
+        $cidades = Cidade::where('uf_cidade', $uf)
+                         ->orderBy('nome_cidades')
+                         ->get(['id', 'nome_cidades']);
+
+        // Retorna a lista de cidades como uma resposta JSON
+        return response()->json($cidades);
+    }
+
   //   public function cidadec()
   //  {
   //      return view('cidades/cidades');
