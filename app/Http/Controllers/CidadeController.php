@@ -95,8 +95,5 @@ class CidadeController extends Controller
         return response()->json($cidads);
     }
 
-  //   public function cidadec()
-  //  {
-  //      return view('cidades/cidades');
-  //  }
+
 }

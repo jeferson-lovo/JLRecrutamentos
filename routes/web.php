@@ -17,23 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [controleradm::class, 'homec'])->name('/');
 Route::get('/home', [controleradm::class, 'homec'])->name('home');
-//Route::get('/curriculos', [controleradm::class, 'curriculosc'])->name('curriculos');
-//Route::get('/competencias', [controleradm::class, 'competenciasc'])->name('competencias');
-//Route::get('/interesse', [controleradm::class, 'interessec'])->name('interesse');
-//Route::get('/cidades', [controleradm::class, 'cidadesc'])->name('cidades');
-//Route::get('/metodologias', [controleradm::class, 'metodologiasc'])->name('metodologias');
-
-//Route::resource('/adm', controleradm::class); // controlador com as rotas para inserção edição etc
-Route::get('/cidades/{uf}', [CidadeController::class, 'getCidadesPorUf'])->name('cidades.por.uf');
+Route::get('/cidades/{uf}', [CidadeController::class, 'getCidadesPorUf'])->name('cidades.por.uf'); //listar cidades apos selecionar UF
 Route::resource('/cidades', CidadeController::class); // controlador para as rotas cidade
-// routes/web.php
-
-//para buscar as cidade por UF
-
-
-//Route::get('/cidade', [CidadeController::class, 'cidadec'])->name('cidade');
 Route::resource('/oportunidades', OportunidadeController::class);
-//Route::get('/oportunidade', [OportunidadeController::class, 'oportunidadec'])->name('oportunidade');
 Route::resource('/metodologias', MetodologiaController::class);
 Route::resource('/competencias', CompetenciaController::class);
 Route::resource('/areas', AreaController::class);

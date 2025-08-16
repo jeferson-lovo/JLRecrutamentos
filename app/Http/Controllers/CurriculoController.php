@@ -38,9 +38,7 @@ class CurriculoController extends Controller
         $experiencias = Experiencia::all();
         $aperfeicoamentos = Aperfeicoamento::all();
         $formacoes = Formacao::all();
-
-      //  $cidads = \App\Models\Cidade::orderBy('nome_cidades')->get();
-        $ufs = Cidade::select('uf_cidade')->distinct()->orderBy('uf_cidade', 'asc')->pluck('uf_cidade');//->get();
+        $ufs = Cidade::select('uf_cidade')->distinct()->orderBy('uf_cidade', 'asc')->pluck('uf_cidade');//listar cidades apos selecionar UF
 
         return view('curriculos/curriculoscreate', compact('ufs', 'cidades', 'metodologias', 'competencias', 'areas', 'experiencias', 'aperfeicoamentos', 'formacoes'));
     }
@@ -117,19 +115,27 @@ class CurriculoController extends Controller
      */
     public function edit(Curriculo $curriculo)
     {
-        $cidades = Cidade::all();
+        $curriculo->load('cidade'); // Carrega a relação cidade para evitar consultas adicionais
         $metodologias = Metodologia::all();
         $competencias = Competencia::all();
         $areas = Area::all();
         $experiencias = Experiencia::all();
         $aperfeicoamentos = Aperfeicoamento::all();
         $formacoes = Formacao::all();
-       // $curriculo = \App\Models\Curriculo::findOrFail($curriculo);
-        //$cidads = \App\Models\Cidade::orderBy('nome_cidades')->get();
-        //$ufs = \App\Models\Cidade::pluck('uf_cidade')->unique();
-       // $ufs = \App\Models\Cidade::pluck('uf_cidade')->unique()->sort();
 
-        return view('curriculos/curriculosedit', compact('cidades', 'metodologias', 'competencias', 'areas', 'experiencias', 'aperfeicoamentos', 'formacoes'));
+
+        // Listar UFs distintas
+        // e as cidades do estado selecionado no curriculo
+        $ufs = Cidade::select('uf_cidade')->distinct()->orderBy('uf_cidade', 'asc')->pluck('uf_cidade');//listar UFs
+        // Verifica se a cidade do curriculo tem UF definida e busca as cidades desse estado
+        $cidadesDoEstado = [];
+        if (isset($curriculo->cidade->uf_cidade)) {
+            $cidadesDoEstado = Cidade::where('uf_cidade', $curriculo->cidade->uf_cidade)
+                                     ->orderBy('nome_cidades', 'asc')
+                                     ->get();
+        }
+
+        return view('curriculos/curriculosedit', compact('curriculo', 'cidadesDoEstado','ufs', 'metodologias', 'competencias', 'areas', 'experiencias', 'aperfeicoamentos', 'formacoes'));
     }
 
     /**

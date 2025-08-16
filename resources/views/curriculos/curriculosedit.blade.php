@@ -20,13 +20,49 @@
         <input type="text" placeholder="comentario" name="comentario_rh"      value="{{ $curriculo->comentario_rh }}">
         <input type="text" placeholder="nota" name="nota_rh"      value="{{ $curriculo->nota_rh }}">
 
+
+
+         {{-- SELECTS DE ESTADO E CIDADE --}}
+        <div class="row g-3">
+            <!-- Select de Estado (UF) -->
+            <div class="col-md-6">
+                <label for="uf_cidade" class="form-label">Estado (UF)</label>
+                <select id="uf_cidade" class="form-select" required>
+                    <option value="">Selecione o Estado</option>
+                    @foreach($ufs as $uf)
+                        {{-- Verifica se a UF do loop é a mesma do currículo para marcá-la como 'selected' --}}
+                        <option value="{{ $uf }}" {{ (isset($curriculo->cidade) && $curriculo->cidade->uf_cidade == $uf) ? 'selected' : '' }}>
+                            {{ $uf }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Select de Cidade -->
+            <div class="col-md-6">
+                <label for="cidade_id" class="form-label">Cidade</label>
+                <select name="cidade_id" id="cidade_id" class="form-select" required>
+                    <option value="">Selecione a Cidade</option>
+                    {{-- Popula com as cidades do estado já selecionado --}}
+                    @foreach($cidadesDoEstado as $cidade)
+                        {{-- Verifica se a cidade do loop é a mesma do currículo para marcá-la como 'selected' --}}
+                        <option value="{{ $cidade->id }}" {{ $curriculo->cidade_id == $cidade->id ? 'selected' : '' }}>
+                            {{ $cidade->nome_cidades }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+<!--
+
         <select name="cidade_id" class="form-control">
-            @foreach($cidades as $cidade)
-            <option value="{{ $cidade->id }}" {{ $cidade->id == $curriculo->cidade_id ? 'selected' : '' }}>
-                {{ $cidade->nome_cidades }}
+            @ foreach($ cidades a s $ cidade)
+            <option value="{ { $cidade->id }}" { { $cidade->id == $curriculo->cidade_id ? 'selected' : '' }}>
+                { { $cidade->nome_cidades }}
             </option>
-            @endforeach
-        </select>
+            @ endforeach
+        </select>  -->
 
         <select name="metodologia_id" class="form-control">
             @foreach($metodologias as $metodologia)
