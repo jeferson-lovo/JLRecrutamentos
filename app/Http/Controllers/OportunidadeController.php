@@ -30,7 +30,8 @@ class OportunidadeController extends Controller
         $metodologias = Metodologia::all();
         $competencias = Competencia::all();
         $areas = Area::all();
-        return view('oportunidades/oportunidadescreate', compact('cidades', 'metodologias', 'competencias', 'areas'));
+        $ufs = Cidade::select('uf_cidade')->distinct()->orderBy('uf_cidade', 'asc')->pluck('uf_cidade');//listar cidades apos selecionar UF
+        return view('oportunidades/oportunidadescreate', compact('ufs', 'cidades', 'metodologias', 'competencias', 'areas'));
     }
 
     /**
@@ -93,7 +94,18 @@ class OportunidadeController extends Controller
         $metodologias = Metodologia::all();
         $competencias = Competencia::all();
         $areas = Area::all();
-        return view('oportunidades/oportunidadesedit', compact('oportunidade', 'cidades', 'metodologias', 'competencias', 'areas'));
+        // Listar UFs distintas
+        // e as cidades do estado selecionado no curriculo
+        $ufs = Cidade::select('uf_cidade')->distinct()->orderBy('uf_cidade', 'asc')->pluck('uf_cidade');//listar UFs
+        // Verifica se a cidade do curriculo tem UF definida e busca as cidades desse estado
+        $cidadesDoEstado = [];
+        if (isset($curriculo->cidade->uf_cidade)) {
+            $cidadesDoEstado = Cidade::where('uf_cidade', $curriculo->cidade->uf_cidade)
+                                     ->orderBy('nome_cidades', 'asc')
+                                     ->get();
+        }
+        return view('oportunidades/oportunidadesedit', compact('oportunidade', 'cidades', 'metodologias', 'competencias', 'areas', 'ufs', 'cidadesDoEstado'));
+
     }
 
     /**
