@@ -7,7 +7,7 @@
 
   <style>
   nav {
-    background-color: #4169E1;
+    background-color: #d6d6d6;  /*  cor que estava antes azul royal #4169E1 */
     overflow: hidden; /* Para evitar que o conteúdo transborde */
   }
 
@@ -56,7 +56,7 @@
 
   nav li a {
     display: block;
-    color: white;
+    color: #4169E1; /*  cor que estava antes azul royal #white */
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -92,7 +92,7 @@
 <nav>
   <ul>
     <li>
-      <img src="{{ asset('img/Logo1.png') }}" alt="Logo JLRecrutamento" width="100" height="50">
+      <img src="{{ asset('img/LogoJL1.png') }}" alt="Logo JLRecrutamento" width="100" height="50">
     </li>
     <li><a href="{{ route('oportunidades.index') }}">Oportunidades</a></li>
     <li><a href="{{ route('curriculos.index') }}">Curriculos</a></li>

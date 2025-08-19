@@ -23,7 +23,14 @@ class CurriculoController extends Controller
     public function index()
     {
         $curriculos = Curriculo::all();
-        return view('curriculos/curriculos', compact('curriculos'));
+        $cidades = Cidade::all();
+        $competencias = Competencia::all();
+        $metodologias = Metodologia::all();
+        $areas = Area::all();
+        $experiencias = Experiencia::all();
+        $aperfeicoamentos = Aperfeicoamento::all();
+        $formacoes = Formacao::all();
+        return view('curriculos/curriculos', compact('curriculos', 'cidades', 'competencias', 'metodologias', 'areas', 'experiencias', 'aperfeicoamentos', 'formacoes'));
     }
 
     /**
