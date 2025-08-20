@@ -4,87 +4,8 @@
     <!-- aqui coloca CSS e BootStrap -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-  nav {
-    background-color: #d6d6d6;  /*  cor que estava antes azul royal #4169E1 */
-    overflow: hidden; /* Para evitar que o conteúdo transborde */
-  }
-
-  .nav-rodape {
-    background-color: #4169E1;
-    overflow: hidden;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width:100%;
-    text-align: center;
-    color: white;
-    padding: 10px 0;
-    z-index: 1000;
-  }
-
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-
-  .nav-rodape ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  nav li {
-    float: left; /* Faz os itens ficarem lado a lado */
-  }
-
-  .nav-rodape li a {
-  color: white;
-  text-decoration: none;
-}
-
-.nav-rodape li a:hover {
-  text-decoration: underline;
-}
-
-  nav li a {
-    display: block;
-    color: #4169E1; /*  cor que estava antes azul royal #white */
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-
-  nav li a:hover {
-    background-color: #000080;
-    color: #FFFF00;
-  }
-
-  .btn {
-    width: 20%;
-    padding: 12px;
-    background-color: #4169E1;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    text-align: center;
-  }
-
-  .btn:hover {
-    background-color: #27408B;
-  }
-
-
-</style>
+    <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <title>JL Recrutamentos</title>
 </head>
 
