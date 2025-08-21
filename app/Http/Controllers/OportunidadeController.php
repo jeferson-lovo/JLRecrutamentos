@@ -18,7 +18,11 @@ class OportunidadeController extends Controller
     public function index()
     {
         $oportunidades = Oportunidade::all();
-        return view('oportunidades/oportunidades', compact('oportunidades'));
+        $cidades = Cidade::all();
+        $metodologias = Metodologia::all();
+        $competencias = Competencia::all();
+        $areas = Area::all();
+        return view('oportunidades/oportunidades', compact('oportunidades', 'cidades', 'metodologias', 'competencias', 'areas'));
     }
 
     /**

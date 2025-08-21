@@ -18,9 +18,13 @@
 
 @foreach($metodologias as $mtd)
 <tr>
-    <th scope="row">{{ $mtd->id }}</th>
-    <td>{{ $mtd->nome_metodologia}}</td>
-    <td>{{ $mtd->descricao_metodologia}}</td>
+    <div>
+        <strong>Nome:</strong> {{ $mtd->nome_metodologia }}
+    </div>
+    <div>
+        <strong>Descrição:</strong> {{ $mtd->descricao_metodologia }}
+    </div>
+
     <td>
         <form action="{{ route('metodologias.destroy', $mtd->id)}}" method="post">
             @csrf
@@ -39,7 +43,7 @@
 
 </tr>
 @endforeach
-
+    <br>
     <div class="btn">
         <!--   <input type="submit" value="Entrar" class="btn" > -->
         <a href="{{ route('metodologias.create') }}" class="btn" type="submit">Nova Metodologia</a>

@@ -18,15 +18,33 @@
 
 @foreach($formacoes as $form)
 <tr>
-    <th scope="row">{{ $form->id }}</th>
-    <td>{{ $form->nivel_formacao}}</td>
-    <td>{{ $form->nome_curso}}</td>
-    <td>{{ $form->nome_entidade}}</td>
-    <td>{{ $form->modalidade }}</td>
-    <td>{{ $form->situacao }}</td>
-    <td>{{ $form->data_inicio_form }}</td>
-    <td>{{ $form->data_fim_form }}</td>
-    <td>{{ $form->obs_formacao }}</td>
+    <div>
+        <strong>Nivel: </strong> {{ $form->nivel_formacao}}
+    </div>
+    <div>
+        <strong>Curso: </strong> {{ $form->nome_curso}}
+    </div>
+    <div>
+        <strong>Instituição: </strong> {{ $form->nome_entidade}}
+    </div>
+
+    <div>
+        <strong>Modalidade: </strong> {{ $form->modalidade}}
+    </div>
+    <div>
+        <strong>Situação: </strong> {{ $form->situacao}}
+    </div>
+    <div>
+        <strong>Data de Início: </strong> {{ \Carbon\Carbon::parse($form->data_inicio_form)->format('d/m/Y') }}
+
+    </div>
+    <div>
+        <strong>Data de Fim: </strong> {{ \Carbon\Carbon::parse($form->data_fim_form)->format('d/m/Y') }}
+    </div>
+    <div>
+        <strong>Observação: </strong> {{ $form->obs_formacao}}
+    </div>
+
     <td>
         <form action="{{ route('formacoes.destroy', $form->id)}}" method="post">
             @csrf
@@ -45,7 +63,7 @@
 
 </tr>
 @endforeach
-
+    <br>
     <div class="btn">
         <!--   <input type="submit" value="Entrar" class="btn" > -->
         <a href="{{ route('formacoes.create') }}" class="btn" type="submit">Nova Formacao</a>

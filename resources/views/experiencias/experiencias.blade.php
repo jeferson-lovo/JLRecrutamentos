@@ -18,13 +18,25 @@
 
 @foreach($experiencias as $exp)
 <tr>
-    <th scope="row">{{ $exp->id }}</th>
-    <td>{{ $exp->nome_empresa}}</td>
-    <td>{{ $exp->cargo_inicio}}</td>
-    <td>{{ $exp->cargo_fim}}</td>
-    <td>{{ $exp->data_inicio}}</td>
-    <td>{{ $exp->data_fim}}</td>
-    <td>{{ $exp->comentarios_exp}}</td>
+    <div>
+        <strong>Empresa: </strong> {{ $exp->nome_empresa}}
+    </div>
+    <div>
+        <strong>Cargo Inicial: </strong> {{ $exp->cargo_inicio}}
+    </div>
+    <div>
+        <strong>Cargo Final: </strong> {{ $exp->cargo_fim}}
+    </div>
+    <div>
+        <strong>Data Inicio: </strong> {{ \Carbon\Carbon::parse($exp->data_inicio)->format('d/m/Y') }}
+    </div>
+    <div>
+        <strong>Data Fim: </strong> {{ \Carbon\Carbon::parse($exp->data_fim)->format('d/m/Y') }}
+    </div>
+    <div>
+        <strong>Comentarios: </strong> {{ $exp->comentarios_exp}}
+    </div>
+
     <td>
         <form action="{{ route('experiencias.destroy', $exp->id)}}" method="post">
             @csrf
@@ -43,7 +55,7 @@
 
 </tr>
 @endforeach
-
+    <br>
     <div class="btn">
         <!--   <input type="submit" value="Entrar" class="btn" > -->
         <a href="{{ route('experiencias.create') }}" class="btn" type="submit">Nova experiencia</a>

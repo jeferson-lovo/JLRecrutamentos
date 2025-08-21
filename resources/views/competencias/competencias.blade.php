@@ -18,9 +18,13 @@
 
 @foreach($competencias as $cpt)
 <tr>
-    <th scope="row">{{ $cpt->id }}</th>
-    <td>{{ $cpt->nome_competencia}}</td>
-    <td>{{ $cpt->descricao_competencia}}</td>
+    <div>
+        <strong>Nome: </strong> {{ $cpt->nome_competencia}}
+    </div>
+    <div>
+        <strong>Descrição: </strong> {{ $cpt->descricao_competencia}}
+    </div>
+
     <td>
         <form action="{{ route('competencias.destroy', $cpt->id)}}" method="post">
             @csrf
@@ -39,7 +43,7 @@
 
 </tr>
 @endforeach
-
+    <br>
     <div class="btn">
         <!--   <input type="submit" value="Entrar" class="btn" > -->
         <a href="{{ route('competencias.create') }}" class="btn" type="submit">Nova competencia</a>

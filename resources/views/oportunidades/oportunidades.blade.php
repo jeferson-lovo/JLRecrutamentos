@@ -17,19 +17,57 @@
     @endif
 @foreach($oportunidades as $op)
 <tr>
-    <th scope="row">{{ $op->id }}</th>
-    <td>{{ $op->descricao_oportunidade}}</td>
-    <td>{{ $op->titulo_oportunidade }}</td>
-    <td>{{ $op->requisitos_oportunidade }}</td>
-    <td>{{ $op->beneficio_oportunidade }}</td>
-    <td>{{ $op->data_abertura_oportunidade }}</td>
-    <td>{{ $op->data_fechamento_oportunidade }}</td>
-    <td>{{ $op->salario_oportunidade }}</td>
-    <td>{{ $op->quantidade_oportunidade }}</td>
-    <td>{{ $op->cidade_id }}</td>
-    <td>{{ $op->metodologia_id }}</td>
-    <td>{{ $op->competencia_id }}</td>
-    <td>{{ $op->area_id }}</td>
+    <div>
+        <Strong>Titulo: </Strong> {{ $op->titulo_oportunidade }}
+    </div>
+    <div>
+        <Strong>Decrição: </Strong> {{ $op->descricao_oportunidade}}
+    </div>
+    <div>
+        <strong>Requisitos: </strong> {{ $op->requisitos_oportunidade }}
+        <strong>Beneficios: </strong> {{ $op->beneficio_oportunidade }}
+    </div>
+    <div>
+        <strong>Data de Abertura: </strong> {{ \Carbon\Carbon::parse($op->data_abertura_oportunidade)->format('d/m/Y') }}
+        <strong>Data de Fechamento: </strong> {{ \Carbon\Carbon::parse($op->data_fechamento_oportunidade)->format('d/m/Y') }}
+    </div>
+    <div>
+        <strong>Media Salarial: </strong> {{ $op->salario_oportunidade }}
+    </div>
+    <div>
+        <strong>Cidade: </strong>
+        @foreach($cidades as $cidade)
+            @if($cidade->id == $op->cidade_id)
+                <td>{{ $cidade->nome_cidades }}</td>
+                <td>{{ $cidade->uf_cidade}} </td>
+            @endif
+        @endforeach
+    </div>
+    <div>
+        <strong>Metodologia: </strong>
+        @foreach($metodologias as $metodologia)
+            @if($metodologia->id == $op->metodologia_id)
+                <td>{{ $metodologia->nome_metodologia }}</td>
+            @endif
+        @endforeach
+    </div>
+    <div>
+        <strong>Competência: </strong>
+        @foreach($competencias as $competencia)
+            @if($competencia->id == $op->competencia_id)
+                <td>{{ $competencia->nome_competencia }}</td>
+            @endif
+        @endforeach
+    </div>
+    <div>
+        <strong>Área: </strong>
+        @foreach($areas as $area)
+            @if($area->id == $op->area_id)
+                <td>{{ $area->nome_area }}</td>
+            @endif
+        @endforeach
+    </div>
+    <strong>Quantidade de Candidatos: </strong>{{ $op->quantidade_oportunidade }}</td>
     <td>
         <form action="{{ route('oportunidades.destroy', $op->id) }}" method="post">
             @csrf
@@ -48,7 +86,7 @@
 
 </tr>
 @endforeach
-
+<br>
     <div class="btn">
         <!--   <input type="submit" value="Entrar" class="btn" > -->
         <a href="{{ route('oportunidades.create') }}" class="btn" type="submit">Nova Oportunidade</a>

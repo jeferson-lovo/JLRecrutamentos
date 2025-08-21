@@ -18,10 +18,14 @@
 
 @foreach($aperfeicoamentos as $ap)
 <tr>
-    <th scope="row">{{ $ap->id }}</th>
-    <td>{{ $ap->nome_aperfeicoamento}}</td>
-    <td>{{ $ap->nome_entidade_ap}}</td>
-    <td>{{ $ap->carga_horaria_ap}}</td>
+    <div>
+        <strong>Nome: </strong> {{ $ap->nome_aperfeicoamento}}
+    </div>
+    <div>
+        <strong>Instituição: </strong> {{ $ap->nome_entidade_ap}}
+        <strong>Carga Horaria: </strong> {{ $ap->carga_horaria_ap}}
+    </div>
+
     <td>
         <form action="{{ route('aperfeicoamentos.destroy', $ap->id)}}" method="post">
             @csrf
@@ -40,7 +44,7 @@
 
 </tr>
 @endforeach
-
+    <br>
     <div class="btn">
         <!--   <input type="submit" value="Entrar" class="btn" > -->
         <a href="{{ route('aperfeicoamentos.create') }}" class="btn" type="submit">Novo aperfeicoamento</a>

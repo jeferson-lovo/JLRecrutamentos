@@ -18,9 +18,13 @@
 
 @foreach($areas as $ar)
 <tr>
-    <th scope="row">{{ $ar->id }}</th>
-    <td>{{ $ar->nome_area}}</td>
-    <td>{{ $ar->descricao_area}}</td>
+    <div>
+        <strong>Area: </strong> {{ $ar->nome_area}}
+    </div>
+    <div>
+        <strong>Descrição: </strong> {{ $ar->descricao_area}}
+    </div>
+
     <td>
         <form action="{{ route('areas.destroy', $ar->id)}}" method="post">
             @csrf
@@ -39,7 +43,7 @@
 
 </tr>
 @endforeach
-
+    <br>
     <div class="btn">
         <!--   <input type="submit" value="Entrar" class="btn" > -->
         <a href="{{ route('areas.create') }}" class="btn" type="submit">Nova areas</a>

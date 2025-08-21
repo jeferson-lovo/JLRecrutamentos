@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="card-body">
-                    <p><strong>Data de Nascimento:</strong> {{ $cr->atualizacao_curriculo }}
+                    <p><strong>Data de Nascimento:</strong> {{ \Carbon\Carbon::parse($cr->atualizacao_curriculo)->format('d/m/Y') }}</p>
 
                     </p>
                     <p>
