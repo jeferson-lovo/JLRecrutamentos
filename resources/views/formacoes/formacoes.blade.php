@@ -55,6 +55,7 @@
             <a class="btn btn-primary btn-sm active" href="">
                 Detalhes
             </a>
+            <a href="">'  '  </a>
             <a class="btn btn-secondary btn-sm active" href="{{ route('formacoes.edit', $form->id)}}">
                 Editar
             </a>
